@@ -508,6 +508,9 @@ Press agree to confirm the above declaration.
 
 <?php
                   $popup_notpresent = false;
+                  echo $student_username_session;
+                  $installments;
+
                   $query_student_detail = "SELECT * FROM `student` WHERE `student`.`student_roll` = '$student_username_session'";
                   $select_student_detail = mysqli_query($connection,$query_student_detail);
                   while($student_detail = mysqli_fetch_assoc($select_student_detail)){
@@ -543,7 +546,7 @@ Press agree to confirm the above declaration.
                   }
 
                   $sql = "SELECT * FROM `popup` WHERE ((`popup`.`class_number` = '$student_std' AND `popup`.`student_roll` = 'all' AND `popup`.`board_name` = '$student_board' AND ( ".implode(" OR ", $sql) .")) OR (`popup`.`student_roll` = '$student_username_session') OR (`popup`.`class_number` = 0 AND `popup`.`subject_id` = $installments AND `popup`.`board_name` = '$fee_destribution')) AND `popup`.`publish_date` = CURRENT_DATE AND `popup`.`shown` = 0";
-                  $select_popup = mysqli_query($connection,$sql);
+                  $select_popup = mysqli_query($connection,$sql); 
                   // $total_attendance_row = mysqli_num_rows($select_news);
                   $k=1;
                   while ($popup = mysqli_fetch_assoc($select_popup)) {
